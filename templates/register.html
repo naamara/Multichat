@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}Healthstone Medical Doctor Consultation  {% endblock %}
+{% block header_text %} <div align="left"><img src="{% static "images/fd.jpg" %}" alt="My image" style="width:1660px; height: 200px;  
+"/> </div>{% endblock %}
+
+{% block content %}
+
+
+ <form action="/register/" method="post"  style=" display: inline-block;
+vertical-align: top;
+text-align: left;
+width: 50%;margin-left: 270px;">
+{% csrf_token %}
+       
+       
+              <strong class="" style="width:280px;text-align: center;font-size: 40px;
+  line-height: 29px;
+  font-family: Century Gothic, Helvetica, sans-serif;
+  color: #1fadc5;">Register</strong>
+
+                <p style="padding: 2px"> Email:<br>
+                <input type="email" name="email" id="telno"  required="True"/>              
+               </p>
+
+               <p style="padding: 2px"> Password:<br>
+                <input type="password" name="password" id="telno"  required="True"/>
+             
+               </p>
+
+                <p style="padding: 2px"> Username:<br>
+                <input type="text" name="username"  required="True"/>              
+               </p>
+
+                             
+
+               <input type="hidden" name="role"  id="dname" value="patient"/> 
+               <input type="hidden" name="page"  id="dname" value="0"/> 
+          
+
+           <p style="padding: 2px">
+
+
+           <input type="submit" id="subm"  class="read" style="font-size: 110%;
+line-height: 1;
+text-align: center;
+background-color: #1fadc5;
+display: inline-block;
+color: #fff !important;
+border-radius: 3em;
+cursor: pointer;
+max-width: 350px;
+width: 100%;
+padding: 0.9em;
+margin: 0.6em 0;
+border: 0;"   value="Register" name="SUBMIT" required>
+          
+            </p>
+
+    </form>
+
+    <div id="chats">
+    </div>
+
+{% endblock %}
+
+
+{% block extra_body %}
+   
+{% endblock %}

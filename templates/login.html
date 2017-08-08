@@ -1,0 +1,57 @@
+
+
+
+{% load staticfiles %}
+
+
+
+<form id="signup" action="/login/"  method="POST" style="position: relative;
+  z-index: 1; left:380px;top:8px; 
+   
+    margin: 0;
+   
+">
+{% csrf_token %}
+   
+            <h3>Log In</h3>
+          
+            
+        
+
+
+            <p >Username:<br>
+            <input type="text" name="username" id="pname"  style="width:260px;height:30px;padding: 7px;"/>
+
+              </p>
+
+               <p>Password:<br>
+               <input type="password" name="password" id="pname" style="width:260px;height:30px;padding: 7px;" />
+
+               </p>
+
+            <p>
+
+
+            <input type="submit" id="submit" class="rea" style="font-size: 110%;
+line-height: 1;
+text-align: center;
+background-color: #1fadc5;
+display: inline-block;
+color: #fff !important;
+border-radius: 3em;
+cursor: pointer;
+max-width: 350px;
+width: 100%;
+padding: 0.9em;
+margin: 0.6em 0;
+border: 0;" placeholder="Enter Message" value="Login" name="SUBMIT" required>
+           
+             </p>
+
+                      </p>
+        <p>Don't have an account? <a href="/Doct/register/" style="font-family: sans-serif;font-size: 20px;color:rgb(8, 218, 243);">Sign up!</a></p>
+
+     
+
+    </form>
+

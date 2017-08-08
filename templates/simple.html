@@ -1,0 +1,24 @@
+{% extends 'base1.html' %}
+
+{% block content %}
+<div id="instructions"> 
+  <p></p> 
+</div> 
+
+<div id="chat"></div>
+<!-- You should try to include this at another place at your convenience :D -->
+<script type="text/javascript" src="/static/js/jchat.js"></script>
+<script type="text/javascript">
+/* chat_id is passed form the view, the init_chat function then does all the magic */
+$(window).ready(function(){
+	init_chat({{chat_id}}, "chat");
+})
+</script>
+<div id="explanation">
+<strong></strong> <br />
+<pre>
+
+</pre>
+</div>
+
+{% endblock %}

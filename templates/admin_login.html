@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Healthstone Medical Doctor Consultation {% endblock %}
+{% block header_text %}
+<div align="left"><img src="{% static "images/fd.jpg" %}" alt="My image" style="width:1660px; height: 170px;  
+"/> 
+   <strong class="" style="width:280px;text-align: center;font-size: 40px;
+  line-height: 29px;
+  font-family: Century Gothic, Helvetica, sans-serif;
+  color:#1fadc5;margin-left: 500px; ">Doctor Consultation </strong>
+  </div>
+
+{% endblock %}
+
+{% block content %}
+
+    
+<form id="signup" action="/login/"  method="POST" style="position: relative;
+  z-index: 1; left:260px;top:8px; 
+   
+    margin: 0;
+   
+">
+{% csrf_token %}
+   
+            <h3>Admin Log In</h3>
+          
+            
+        
+
+
+            <p >Username:<br>
+            <input type="text" name="username" id="pname"  style="width:260px;height:30px;padding: 7px;"/>
+
+              </p>
+
+               <p>Password:<br>
+               <input type="password" name="password" id="pname" style="width:260px;height:30px;padding: 7px;" />
+
+               </p>
+
+            
+
+            <p>
+
+
+            <input type="submit" id="submit" class="rea" style="font-size: 110%;
+line-height: 1;
+text-align: center;
+background-color: #1fadc5;
+display: inline-block;
+color: #fff !important;
+border-radius: 3em;
+cursor: pointer;
+max-width: 350px;
+width: 100%;
+padding: 0.9em;
+margin: 0.6em 0;
+border: 0;" placeholder="Enter Message" value="Login" name="SUBMIT" required>
+           
+             </p>
+
+                      </p>
+        
+</p>
+
+     
+
+    </form>
+
+
+    <div id="chats">
+    </div>
+
+{% endblock %}
+
+
+{% block extra_body %}
+
+{% endblock %}

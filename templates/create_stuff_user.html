@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Healthstone Medical Doctor Consultation {% endblock %}
+{% block header_text %}
+<div align="left"><img src="{% static "images/fd.jpg" %}" alt="My image" style="width:1660px; height: 170px;  
+"/> 
+   <strong class="" style="width:280px;text-align: center;font-size: 40px;
+  line-height: 29px;
+  font-family: Century Gothic, Helvetica, sans-serif;
+  color:#1fadc5;margin-left: 500px; ">Doctor Consultation </strong>
+  </div>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="module">
+      <div class="module-head">
+        <b>Create A Staff User</b> <small><i>With great power comes great responsibility , don't be careless!! </i></small>
+      </div><!--/.module-head-->
+      {% if reg_success %}
+      <script>alert("Registration successful");</script>
+      {% endif %}
+
+      {% if reg_success %}
+      <script>alert("User already exists");</script>
+      {% endif %}
+      <div class="module-body">
+
+      <div id='signup_form_response'>
+{% include "form-error.html" %}
+</div>
+
+        <form class="form-horizontal" method="POST" action="" id="createadminuserform">
+          {% csrf_token %}
+
+
+          <section class="docs">
+          <h4>Staff Details</h4>
+          <hr />
+          </section>
+
+
+               <p > Email:<br>
+                <input type="email" name="email" id="telno"  required="True"/>              
+               </p>
+
+                <p > Username:<br>
+                <input type="text" name="username" placeholder="peter(General Doctor)"  required="True"/>              
+               </p>
+
+                  <div class="control-group">
+            <label class="control-label">Phone No</label>
+            <div class="controls">
+              <input type="text" class="input-block-level" placeholder="Phone number" name="telno">
+            </div>
+          </div>
+
+
+               <p style="padding: 2px"> Password:<br>
+                <input type="password" name="password" id="telno"  required="True"/>
+             
+               </p>
+                             
+
+               <input type="hidden" name="role"  id="dname" value="doctor"/> 
+               <input type="hidden" name="page"  id="dname" value="0"/> 
+          
+
+          <div class="control-group">
+            <label class="control-label">Upload Photo</label>
+            <div class="controls">
+              <input class="passport_image_upload" id="passport" name="profile_pic" size="8" type="file" multiple accept='image/*,application/pdf'>
+            </div>
+          </div>
+
+
+             <div class="control-group">
+            <label class="control-label">Role</label>
+            <div class="controls">
+                <select class="span7" name="role">
+                  <option value="doctor">doctor</option>
+                  <option value="admin">Admin</option>
+                  <option value="superadmin"> Super Admin</option>
+                </select>
+            </div>
+          </div>
+
+
+           <p style="padding: 2px">
+
+
+           <input type="submit" id="subm"  class="read" style="font-size: 110%;
+line-height: 1;
+text-align: center;
+background-color: #1fadc5;
+display: inline-block;
+color: #fff !important;
+border-radius: 3em;
+cursor: pointer;
+max-width: 350px;
+width: 100%;
+padding: 0.9em;
+margin: 0.6em 0;
+border: 0;"   value="Register" name="SUBMIT" required>
+          
+            </p>
+        </form>
+      </div><!--/.module-body-->
+    </section>
+
+
+<!-- Form Validation -->
+<script type="text/javascript" src="{{STATIC_URL}}js/jquery.form-validation.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#createadminuserform").validate({
+
+
+    });
+    });
+
+</script>
+
+{% endblock %}
+
+
