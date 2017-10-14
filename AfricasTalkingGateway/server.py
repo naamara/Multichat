@@ -10,22 +10,12 @@ apikey   = "e89af6fff6753e401ca208eefaad414248cbf3dd425f87712bd3cda24ca3b46e"
 
     
 
-def SendSms(self, transaction={}):
+def SendSms(self, dtelno=None, createdBy=None, comment=None):
 
-    if 'receiver_number' in transaction:
-        to = transaction['receiver_number']
-        try:
-            if not to[0] == '+':
-                to="+256%s%s"%(to[0].strip("0"), to[1:])
-                print to
-        except Exception, e:
-            debug(e, 'Error sending twilio sms', 'sms')
-
-    else:
-        to =  "+256786031444"
+    to = dtelno
 
     # And of course we want our recipients to know what we really do
-    message = "Medical Consulation"
+    message = "Medical Consulation by %s " % (createdBy)
     # Create a new instance of our awesome gateway class
     gateway = AfricasTalkingGateway(username, apikey)
     # NOTE: If connecting to the sandbox, please add the sandbox flag to the constructor:

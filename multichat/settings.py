@@ -19,7 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret! And don't use debug=True in production!
 SECRET_KEY = 'imasecret'
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 INSTALLED_APPS = [
@@ -30,7 +30,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'channels',
     'chat',
     'AfricasTalkingGateway',
   
@@ -49,20 +48,6 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'multichat.urls'
 
-redis_host = os.environ.get('REDIS_HOST', 'localhost')
-
-# Channel layer definitions
-# http://channels.readthedocs.org/en/latest/deploying.html#setting-up-a-channel-backend
-CHANNEL_LAYERS = {
-    "default": {
-        # This example app uses the Redis channel layer implementation asgi_redis
-        "BACKEND": "asgi_redis.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [(redis_host, 6379)],
-        },
-        "ROUTING": "multichat.routing.channel_routing",
-    },
-}
 
 TEMPLATES = [
     {
@@ -118,9 +103,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
+
+
 
 SITE_ID = 1
 
@@ -132,12 +116,16 @@ ADMIN = 'admin'
 STATIC_URL = '/static/'
 
 # Add these new lines
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
+admin.site.site_header = 'Healthstone Medical Consultation'
+admin.site.site_title = 'Healthstone admin'
+
+
+
+# Add these new lines
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-
-admin.site.site_header = 'Healthstone Medical Consultation'
-admin.site.site_title = 'Healthstone admin'

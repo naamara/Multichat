@@ -1,4 +1,4 @@
-#!/media/mandela/mydocs/sites2/channels-examples/Healthstone/myprojectenv/bin/python2.7
+#!/media/mandela/mydocs/sites2/channels-examples/multichat_deploy/myprojectenv/bin/python2
 
 # -*- coding: utf-8 -*-
 import re

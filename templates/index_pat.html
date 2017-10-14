@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
+
+{% if auth_error %}
+
+    <strong>
+    <script>alert("Invalid Username or Password")</script>
+    </strong>
+
+{% endif %}
   
 {% block slider %}
 
@@ -100,12 +108,12 @@ Slider animations -->
           <div class="wrapper">
         <div class="con-top">
           <h3>Welcome to our Doctor(Medical) consultation Portal!</h3>
-          <p>Login using  your Phonenumber and you will be automatically registered and then you will fill in your sickness  symptons and signs  . You will automatically get access to the home page and get in touch with the doctor the doctors very fast</p>
+          <p>Register By clicking on  <a href="/register/" style="font-family: sans-serif;font-size: 20px;color:rgb(8, 218, 243);">Sign up!</a>and  you will be automatically registered and then you will fill in your sickness  symptons and signs  . You will automatically get access to the home page and get in touch with the doctor you want  very fast</p>
         </div>
         <div class="con-bot">
           <div class="left">
             <div class="bot-left">
-              <img src="{% static 'images/docts.jpeg' %}" alt=""/>
+              <img src="{% static 'img/home/IMG_20170810_183736.jpg' %}" alt=""/>
             </div>
             <div class="left-text">
             <h4>A group of doctors with whom we partner</h4>
@@ -116,10 +124,10 @@ Slider animations -->
           </div>
           <div class="left">
             <div class="bot-left">
-              <img src="{% static 'images/doctgirl.jpeg' %}" alt=""/>
+              <img src="{% static 'img/home/IMG_20170810_183743.jpg' %}" alt=""/>
             </div>
             <div class="left-text">
-            <h4>Our Senior Experienced Doctor(M)</h4>
+            <h4>Our Senior Experienced Doctors(M)</h4>
             <span class="doller"></span>
             <p><!-- Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismo --></p>
               <p><span class="read">Read More >></span></p>
@@ -127,11 +135,11 @@ Slider animations -->
           </div>
           <div class="right">
             <div class="bot-left">
-              <img src="{% static 'images/docts2.jpeg' %}" alt=""/>
+              <img src="{% static 'img/home/IMG_20170810_190527.jpg' %}" alt=""/>
             </div>
             <div class="left-text">
               
-              <h4>Some of our medical doctors paying attention to a medical matter</h4>
+              <h4>A senior medical doctor seated at the work place</h4>
               <span class="doller"></span>
               <p><!-- Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismo --></p>
                 <p><span class="read">Read More ></span></p>
@@ -161,14 +169,14 @@ Slider animations -->
                                     <h4>Our Patients Testimonials</h4>
                                     <div class="box-left">
                                     <div class="bot-img">
-                                      <img src="{% static 'images/pic3.jpg' %}" alt=""/>
+                                      <img src="{% static 'img/home/IMG_20170810_183932.jpg' %}" alt=""/>
                                     </div>
                                       <div class="bot-desc">
                                         <p>Time and again, our clients report that Best Doctors more than pays for itself. Organizations save dollars, worry and even lives. Which is why we now serve more members in every industry. </p>
                                       </div>
                                     <div class="clear"></div>
                                     <div class="bot-img">
-                                      <img src="{% static 'images/dot2.jpeg' %}" alt=""/>
+                                      <img src="{% static 'img/home/IMG_20170810_183831.jpg' %}" alt=""/>
                                      </div>
                                       <div class="bot-desc">
                                         <p>Best Doctors creates a collaborative environment where doctors work together to improve outcomes. We do this by creating a report that not only supports the member, but also the treating team, which supports decision making and helps ensure better outcomes.
@@ -178,7 +186,7 @@ Slider animations -->
                                      </div>
                                     <div class="clear"></div>
                                     <div class="bot-img">
-                                      <img src="{% static 'images/index12.jpeg' %}" alt=""/>
+                                      <img src="{% static 'img/home/index12.jpeg' %}" alt=""/>
                                     </div>
                                       <div class="bot-desc">
                                         <p>After seeing almost a dozen different doctors, Samuel was frustrated by his increasing pain levels, lack of mobility and the absence of any clear answers regarding her condition, so he contacted Doctors through us, he then got the clear answers to his condition from us</p>
@@ -187,7 +195,7 @@ Slider animations -->
                                     </div>
                                     <div class="box1-left">
                                     <div class="bot-img">
-                                      <img src="{% static 'images/doctor12.jpeg' %}" alt=""/>
+                                      <img src="{% static 'img/home/IMG_20170810_183950.jpg' %}" alt=""/>
                                     </div>
                                       <div class="bot-desc1">
                                         <p>“Through us , people can chat with a doctor on demand, send pictures of a problem, and even copies of lab results  and past historical illness to find out if something is serious or not . They can also order for labtests or prescription based on doctors prescription
@@ -200,7 +208,7 @@ Slider animations -->
                                     
                                     <div class="clear"></div>
                                     <div class="bot-img">
-                                      <img src="{% static 'images/dfriend.jpeg' %}" alt=""/>
+                                      <img src="{% static 'img/home/IMG_20170810_191236.jpg' %}" alt=""/>
                                      </div>
                                       <div class="bot-desc1">
                                         <p><!-- Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet --> </p>

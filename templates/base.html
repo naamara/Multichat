@@ -7,20 +7,30 @@
     {% include  "metadata.html" %}
  <!--  <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css" media="screen" />
  -->  <script src="{% static "js/jquery-1.12.2.min.js" %}" type="text/javascript"></script>
-  <script src="{% static "channels/js/websocketbridge.js" %}" type="text/javascript"></script>
+
   {% block extra_head %}{% endblock %}
 
 <link rel="stylesheet" href="{% static 'css/style2.css' %}" type="text/css" media="all" />
 
 <link rel="stylesheet" href="{% static 'css/style3.css' %}" type="text/css" media="all" />
 
+
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link href="{% static 'css/slider.css' %}" rel="stylesheet" type="text/css" media="all"/>
     
      <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
 
+<!-- 
+   For GooGle adsent monitization -->
+   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-7982644606215482",
+    enable_page_level_ads: true
+  });
+</script>
 
-    
+
 </head>
 <body>
 
@@ -42,7 +52,7 @@
 {% block nav_bar %}
 <div class="header" style="width: 2000px; height: 200px;">
 <div class="wrap">
-<div class="logo"  ><p  style="color: black; font-size: 32px;"><img style="width:200px; height:100px" src="{% static 'images/doctorWom.jpg' %}"  style="" alt="" /></p></div>
+<div class="logo"  ><p  style="color: black; font-size: 32px;"><img style="width:200px; height:100px" src="{% static 'img/home/IMG_20170810_190618.jpg' %}"  style="" alt="" /></p></div>
    <div class="con-right">
       <div class="grid1-l-img">
         <img src="{% static 'images/contact.png' %}" alt="">
@@ -57,7 +67,7 @@
 </div>
 <div class="header-bottom">
       <div class="wrap">
-       <!--  <ul id="nav">
+     <!--    <ul id="nav">
                 <li><a class="hsubs" href="/Doct/" title="Logout">Home</a></li>
                 <li><a class="hsubs" href="/Doct/about/">About Us</a></li>
                 <li><a class="hsubs" href="/Doct/team/">Our Team</a>
@@ -101,12 +111,18 @@
                
         </ul>
  -->
+
+   {% block navigation %} 
+
+                {% endblock %}  
+
+
        </div>
 </div>
 
 {% endblock %}
 <h1 style="font-size: 2.6rem;
-  text-transform: capitalize;color: black; margin-left: 450px;margin-top: 20px;	">Doctor(Medical) Consulation</h1>	
+  text-transform: capitalize;color: green; margin-left: 200px;margin-top: 20px;	">Healthstone Online Doctor Consultation</h1>	
 
 {% block slider %}
 

@@ -47,3 +47,11 @@ class CreateAdminUserForm(forms.Form):
         if password1 and password1 != password2:
             raise forms.ValidationError("Passwords don't match")
         return self.cleaned_data
+
+
+
+
+
+
+
+

@@ -171,13 +171,39 @@ def jsonify(object, fields=None, to_dict=False):
 
 def landing(request):
     """Index page, force login here"""
+    context = RequestContext(request)
     return render_to_response('index_pat.html', {'documents':Document.objects.all()})
 
 
 def simple(request, id):
     """Simple chat room demo, it is not attached to any other models"""
     # get the chat instance that was created by the fixture, pass the id to the template and you're done!
-    return render_to_response('simple.html', {'chat_id':Room.objects.get(id=1).id}) 
+    dtelno = Room.objects.get(id=id).dtelno
+    comment = Room.objects.get(id=id).comment
+    createdBy = Room.objects.get(id=id).createdBy
+
+    print "Doctor Phone number", dtelno
+
+    
+
+    return render_to_response('simple.html', {'chat_id':Room.objects.get(id=id).id}) 
+
+
+
+def simple2(request, id):
+    """Simple chat room demo, it is not attached to any other models"""
+    # get the chat instance that was created by the fixture, pass the id to the template and you're done!
+    dtelno = Room.objects.get(id=id).dtelno
+    comment = Room.objects.get(id=id).comment
+    createdBy = Room.objects.get(id=id).createdBy
+
+    print "Doctor Phone number", dtelno
+
+    return render_to_response('simple.html', {'chat_id':Room.objects.get(id=id).id}) 
+
+
+
+
 
 @login_required
 def complex(request, id):
@@ -202,45 +228,50 @@ def register(request):
     # Set to False initially. Code changes value to True when registration succeeds.
     registered = False
     doctor_users = None 
+    try: 
 
     # If it's a HTTP POST, we're interested in processing form data.
-    if request.method == 'POST':
-        # Attempt to grab information from the raw form information.
-        # Note that we make use of both UserForm and UserProfileForm.
-        username = request.POST['username']
-        password = request.POST['password']
-        email = request.POST['email']
-        password = request.POST['password']
-        role = request.POST['role']
+        if request.method == 'POST':
+            # Attempt to grab information from the raw form information.
+            # Note that we make use of both UserForm and UserProfileForm.
+            username = request.POST['username']
+            password = request.POST['password']
+            email = request.POST['email']
+            password = request.POST['password']
+            role = request.POST['role']
 
-        doctor_users = All_doctors(doctor_users)
+            doctor_users = All_doctors(doctor_users)
 
-        user = User(username=username, email=email)
-        user.save()
-        user.set_password(password)
-        user.save()
-        
-      
-        rg = Register(user=user, username=username, password=password, email=email, page='0',role2=role)
-        rg.save()
-        print 'Password %s' % rg.password
-        print 'Password %s' % rg.username
-        # Did the user provide a profile picture?
-        # If so, we need to get it from the input form and put it in the UserPro2
-        user = authenticate(username=rg.username, password=rg.password)
-        if user is not None:
-                if user.is_active:
-                    auth_login(request, user)
-                    
-                    return render(request, "pat_chat.html", {'doctor_users':doctor_users,'username':rg.username
-    
-        })
-        
+            user = User(username=username, email=email)
+            user.save()
+            user.set_password(password)
+            user.save()
             
+          
+            rg = Register(user=user, username=username, password=password, email=email, page='0',role2=role)
+            rg.save()
+            print 'Password %s' % rg.password
+            print 'Password %s' % rg.username
+            # Did the user provide a profile picture?
+            # If so, we need to get it from the input form and put it in the UserPro2
+            user = authenticate(username=rg.username, password=rg.password)
+            if user is not None:
+                    if user.is_active:
+                        auth_login(request, user)
+                        
+                        return render(request, "pat_chat.html", {'doctor_users':doctor_users,'username':rg.username
+        
+            })
+            
+                
 
+            return render_to_response('index_pat.html',{'registered': registered}, context)
+            registered = True
+        
+    except Exception, e:
+        pass
         return render_to_response('index_pat.html',{'registered': registered}, context)
-        registered = True
-   
+
     print "OOOK"
     return render_to_response('register.html',{'registered': registered}, context)
 
@@ -257,6 +288,8 @@ def illness(request):
     AfricasTalk = None
     AfricasTalk  = AfricasTalk
     doctor_sms_data = {}
+    dp_room = None
+
     password = None
     dname = None
     pdiog = None
@@ -264,6 +297,7 @@ def illness(request):
     doctor_users = None
     doctor_users = All_doctors(doctor_users)
     us = None
+    gender = None
     if request.POST:
         post_values = request.POST.copy()
         
@@ -289,6 +323,8 @@ def illness(request):
 
         print "Doctor name %s " % (dname)
 
+        print "Doctor Phonenumber %s " % (dtelno)
+
         ill_det=Illness(gender=gender,comp_signs=comp_signs, dtelno=dtelno,illness=illness, kintelno=ptelno,page=0,username=username, dname=dname,doctorusername=dname,amt=8000)
         ill_det.save()
         print 'Patient User name %s ' % username
@@ -302,7 +338,7 @@ def illness(request):
         try:
             dp_room=Room.objects.get(createdBy=dname,dUsername=username)  
         except Exception,e:
-            dp_room=Room(createdBy=username,dUsername=dname)
+            dp_room=Room(createdBy=username,dUsername=dname, dtelno=dtelno, comment=illness)
             dp_room.save()
             print "OOOOOOK"
 
@@ -324,6 +360,10 @@ def illness(request):
         #SendSms(doctor_sms_data)
         # illdecsuccess
         return render_to_response('index.html', { 'password':password,'gender':gender,   'dp_room':dp_room}, context)
+
+
+    else:
+        return render_to_response('index_pat.html', { 'password':password,'gender':gender,   'dp_room':dp_room}, context)
 
 
 
@@ -366,9 +406,13 @@ def user_login(request):
 
         try:
             check_user = Register.objects.get(password=password, username=username)
-        except Exception,e:
 
-            print 'User Does not exist', e
+        except Register.DoesNotExist:
+            listing = None
+           
+            auth_error = True
+            return render_to_response('index_pat.html', {'log':log, 'auth_error':auth_error}, context)
+
 
         
         if check_user.role2 == PATIENT:
@@ -406,7 +450,7 @@ def user_login(request):
                 if user.is_active:
                     login(request, user)
                     if dp_room:
-                        return render(request, "patientsub.html", {'dp_room':dp_room,'dp_room1':dp_room1,'username':username
+                        return render(request, "index.html", {'dp_room':dp_room,'dp_room1':dp_room1,'username':username
         })
 
                     

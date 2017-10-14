@@ -56,6 +56,7 @@ class Room(models.Model):
     comment = models.TextField(blank=True, null=True)
     createdBy = models.CharField(blank=True,max_length=50,  default=False)
     dUsername = models.CharField(blank=True,max_length=50,  default=False)
+    dtelno = models.CharField(null=True,max_length=50,  default=False)
     objects = RoomManager() # custom manager
     
     def __add_message(self, type, sender, message=None):

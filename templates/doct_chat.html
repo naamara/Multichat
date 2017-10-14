@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %} Healthstone Medical Doctor Consultation {% endblock %}
-{% block header_text %} <div align="left"><img src="{% static "images/fd.jpg" %}" alt="My image" style="width:1660px; height: 200px;  
+{% block header_text %} <div align="left"><img src="{% static "img/fd.jpg" %}" alt="My image" style="width:1660px; height: 200px;  
 "/> </div> 
 
 {% endblock %}
@@ -12,7 +12,7 @@
 
     <ul class="rooms">
 {% for dp_room in dp_room  %}
-                    <li class="room-link" data-room-id="{{ dp_room.id }}"  data-room-user="{{ dp_room.dUsername }}"><a href="/simple/{{dp_room.id}}">{{dp_room.createdBy }}</a></li>
+                    <li class="room-link" data-room-id="{{ dp_room.id }}"  data-room-user="{{ dp_room.dUsername }}"><a href="/simple2/{{dp_room.id}}">{{dp_room.createdBy }}</a></li>
 {% endfor %}        
        
     </ul>

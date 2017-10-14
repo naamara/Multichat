@@ -1,4 +1,4 @@
-#!/media/mandela/mydocs/sites2/channels-examples/Healthstone/myprojectenv/bin/python
+#!/media/mandela/mydocs/sites2/channels-examples/multichat_deploy/myprojectenv/bin/python
 
 import sys
 import getopt
