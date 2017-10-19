@@ -1,0 +1,216 @@
+
+
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+<head>
+<title>Doctor(Medical)  Consultation Website | Home </title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="{% static 'css/slider.css' %}" rel="stylesheet" type="text/css" media="all"/>
+<script src="http://code.angularjs.org/1.2.6/angular.js"></script> 
+    <script src="app.js"></script>
+
+    <style type="text/css">
+
+
+    </style>
+    
+</head>
+<body>
+
+{% load static %}
+<div class="header" style="width: 2000px; ">
+<div class="wrap">
+<div class="logo"  ><a href="index.html" style="color: #fff; font-size: 32px;"><img src="{% static 'images/logocon.jpe' %}"  style="" alt="" />Online Doctor(Medical) Consulation</a></div>
+   <div class="con-right">
+      <div class="grid1-l-img">
+        <img src="{% static 'images/contact.png' %}" alt="">
+      </div>
+      <div class="grid1-l-desc">
+        <p>Contact : +256754307471</p>
+      </div>
+      <div class="clear"></div>
+  </div>
+    <div class="clear"></div>
+     </div>
+</div>
+<div class="header-bottom">
+      <div class="wrap">
+        <ul id="nav">
+                <li><a class="hsubs" href="/Doct/" title="Logout">Home</a></li>
+                <li><a class="hsubs" href="/Doct/about/">About Us</a></li>
+                <li><a class="hsubs" href="/Doct/team/">Our Team</a>
+        
+                <li><a href="/Doct/contact/">Contact Us</a></li>
+                <li><a href="/Doct/how_it_works/">How it works</a></li>
+                {% if ill_more %}
+                <li><a href="/Doct/orderdrugs/">Order Drugs</a></li>
+                <li><a href="/Doct/labtests/">Order Lab Test</a></li>
+
+                {% endif %}
+
+              
+                <li><a href="/Doct/whyus/">Why Us</a></li>
+                    <ul class="subs">
+                        <li><a href="#">Hotels</a></li>
+                        <li><a href="#">Restaurants</a></li>
+                        <li><a href="#">Beach Resorts</a></li>
+                    </ul>
+                </li>
+                {% if user.is_authenticated %}
+
+                <li><a href="/Doct/logout/">Logout</a></li>
+
+                {% endif %}
+               
+        </ul>
+
+       </div>
+</div>
+
+
+
+{% block body_block %}
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
+<div id="div1">
+
+
+<div style="visibility:visible;position:relative;top:-40px;left: 320px;" id="paypalformContainer" align="center">
+
+
+<form id="signu" action="/Doct/ambulance/"  method="POST" style=" display: inline-block;
+vertical-align: top;
+text-align: left;
+width: 50%;">
+{% csrf_token %}
+      
+            <strong class="" style="width:280px;text-align: center;font-size: 40px;
+  line-height: 29px;
+  font-family: Century Gothic, Helvetica, sans-serif;
+  color:; ">Order Ambulance </strong>
+          
+            <p><a href="/Doct/patientH" title="Logout">Back</a></p>
+     
+     
+
+             <p>City:<br>
+            <select  type="text" name="city"  style="width:280px;padding: 12px 20px;
+              margin: 8px 0;
+              display: inline-block;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              box-sizing: border-box;" ng-model="location" required>
+              <option value="Kampala">Kampala</option>
+              
+
+              </select>
+
+            </p>
+
+
+
+            <p>Area :<br>
+              <select  type="text" name="area"  style="width:280px;padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;" ng-model="location" required>
+
+                 {% include "Doct/area_in_kampala.html" %}
+
+                </select>
+
+           </p>
+          
+
+            <p style="padding: 12px">Phone number (Condition):<br>
+
+            <input type="text" name="phone"  style="width:280px" placeholder="Phonenumber" required size='20'  autofocus>
+
+
+              </p>
+
+               <p style='padding: 12px'>Amount::<br>
+                ugx.15,000
+            
+               </p>
+
+                <p style="padding: 12px">
+                Receiver Phonenumber:<br>
+                0754307471
+
+
+               </p>
+
+            <p style="padding: 12px">
+            <input type="submit" id="subm" class="rea" style="font-size: 110%;
+line-height: 1;
+text-align: center;
+background-color: #1fadc5;
+display: inline-block;
+color: #fff !important;
+border-radius: 3em;
+cursor: pointer;
+max-width: 350px;
+width: 100%;
+padding: 0.9em;
+margin: 0.6em 0;
+border: 0;"  value="Order Ambulance" name="SUBMIT" required>
+           
+             </p>
+
+      
+
+    </form>
+    </div>
+
+
+</div>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p><p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
+<div class="footer-bottom" style="width: 2000px; ">
+<div class="wrap">  
+  <div class="copy">
+    <p>ES - DOCTOR&copy; 2017 All rights Reserved | Design by <a href="http://w3layouts.com">Mandela Shaban</a> &nbsp;&nbsp;&nbsp;Photos by <a href="http://www.freegreatpicture.com/">Freegreatpicture</a></p>
+  </div>
+ </div>
+</div>
+</body>
+</html>
+
+        {% endblock %}

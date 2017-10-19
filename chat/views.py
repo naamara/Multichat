@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render_to_response, get_object_or_404
 
-from chat.models import Document
+from chat.models import Document, Orderdrugs,Labtests,Contact
 
 from chat.utils import All_doctors, doctor_users
 from django.contrib.auth.models import User
@@ -26,6 +26,9 @@ from django.http import HttpResponseRedirect
 from django.conf import settings
 from chat.forms import CreateAdminUserForm
 from AfricasTalkingGateway.server import SendSms
+from chat.check_area import *
+from chat.check_areas import *
+from django.contrib import messages
 
 
 @csrf_exempt
@@ -562,3 +565,165 @@ def create_stuff_user(request, is_customer_care=False):
     return render(request, "create_stuff_user.html", {'form': form, 'super_admin':super_admin, 'reg_success':reg_success
         
             })
+
+
+
+
+
+
+def about(request):
+    # Like before, obtain the context for the user's hrequest.
+    context = RequestContext(request)
+    
+    return render_to_response('about.html', {}, context)
+
+
+def whyus(request):
+    # Like before, obtain the context for the user's hrequest.
+    context = RequestContext(request)
+    
+    return render_to_response('whyus.html', {}, context)
+
+
+def contact(request):
+    # Like before, obtain the context for the user's hrequest.
+    context = RequestContext(request)
+    post_values = ''
+        
+
+    
+    return render_to_response('contactus.html', {}, context)
+
+def our_team(request):
+    # Like before, obtain the context for the user's hrequest.
+    context = RequestContext(request)
+    
+    return render_to_response('ourteam.html', {}, context)
+
+
+
+
+def  how_it_works(request):
+    context = RequestContext(request)
+
+    return render_to_response(
+    'how_it_works.html',
+    {},
+    context)
+
+
+
+@csrf_exempt
+def labtests(request):
+    
+    response = False
+    staff_no = None
+    staff_name  = None
+    Check_area = None
+
+    order_drug = True
+
+    post_values = {}
+    context = RequestContext(request)
+
+    if request.POST:
+        post_values = request.POST.copy()
+        telno = post_values['telno']
+        location = post_values['city']
+        msg = post_values['msg']
+        print "Message %s " %  msg
+
+
+      
+        staff_no, staff_name = test_staff(location, staff_no, staff_name)
+
+        
+        cont=Labtests(telno=telno,city=location, msg=msg, staff_no=staff_no, staff_name=staff_name)
+        cont.save()
+        response = True
+
+        if cont:
+            messages.success(request, "You have been Successfully ordered for Lab tests")
+            
+            
+        else:
+            messages.success(request, "Error occured while ordering for Lab tests")
+          
+
+
+    return render_to_response('labtests.html', {'order_drug':order_drug}, context)
+
+
+
+@csrf_exempt
+def orderdrugs(request):
+    
+    response = False
+    post_values = {}
+    context = RequestContext(request)
+    Check_area = None
+
+    staff_no = " "
+    staff_name  = " "
+    labtest = True
+
+
+    if request.POST:
+        post_values = request.POST.copy()
+        telno = post_values['telno']
+        location = post_values['city']
+        area = post_values['area']
+        msg = post_values['msg']
+        print "Message %s " %  msg
+
+  
+        staff_no, staff_name = drug_staff(location, staff_no, staff_name)
+        
+        cont=Orderdrugs(telno=telno,city=location, area=area, msg=msg, staff_no=staff_no, staff_name=staff_name)
+        cont.save()
+        response = True
+
+        if cont:
+            messages.success(request, "Your have been Successfully ordered for drugs")
+            
+            
+        else:
+            messages.success(request, "Error occured while ordering for drugs")
+          
+
+
+    return render_to_response('orderdrugs.html', {'labtest':labtest}, context)
+
+
+
+
+
+@csrf_exempt
+def addcontact(request):
+  
+    response = False
+    post_values = {}
+    context = RequestContext(request)
+
+    if request.POST:
+        post_values = request.POST.copy()
+        telno = post_values['telno']
+        email = post_values['email']
+        name = post_values['name']
+        msg = post_values['msg']
+        print "Message %s " %  msg
+        
+        cont=Contact(telno=telno,email=email, msg=msg)
+        cont.save()
+        response = True
+
+        if cont:
+            messages.success(request, "Your contact details have been Successfully added")
+            
+            
+        else:
+            messages.success(request, "Error occured while adding your contact details")
+          
+
+
+    return render_to_response('contactus.html', {}, context)

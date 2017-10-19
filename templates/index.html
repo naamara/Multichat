@@ -1,46 +1,14 @@
-{% extends "base.html" %}
+{% extends "base_pat.html" %}
 
 {% block title %} Livingstone Clinic Doctor Consultation {% endblock %}
 {% block header_text %} Healthstone Doctor Consultation  hbhkj{% endblock %}
 
 
 
-   {% block navigation %} 
-
- 
- <ul id="nav">
-                <li><a class="hsubs" href="/" title="Logout">Home</a></li>
-                <li><a class="hsubs" href="/about/">About Us</a></li>
-        
-
-        {% if user.is_authenticated %}
-         
-                <li><a href="/orderdrugs/">Order Drugs</a></li>
-
-                <li><a href="/labtests/">Order Lab Test</a></li>
-             
-                <li><a href="/whyus/">Why Us</a></li>
-                    <ul class="subs">
-                     <!--    <li><a href="#">Hotels</a></li>
-                        <li><a href="#">Restaurants</a></li>
-                        <li><a href="#">Beach Resorts</a></li> -->
-                    </ul>
-                </li>
-
-               
 
 
-                <li><a href="/accounts/logout/">Logout</a>
-</li>
-
-                {% endif %}
-               
-        </ul>
-
-
-                {% endblock %}  
-
-
+  {% block headline %} <h1 style="font-size: 2.6rem;
+  text-transform: capitalize;color: green; margin-left: 200px;margin-top: 20px; ">Healthstone Online Doctor Consultation</h1>    {% endblock %}
 
 
 {% block content %}

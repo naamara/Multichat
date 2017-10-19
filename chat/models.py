@@ -57,6 +57,7 @@ class Room(models.Model):
     createdBy = models.CharField(blank=True,max_length=50,  default=False)
     dUsername = models.CharField(blank=True,max_length=50,  default=False)
     dtelno = models.CharField(null=True,max_length=50,  default=False)
+    payment = models.CharField(null=True,max_length=50,  default=False)
     objects = RoomManager() # custom manager
     
     def __add_message(self, type, sender, message=None):
@@ -216,3 +217,70 @@ class Document(models.Model):
     """Dummy document model, just for testing use"""
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=1500)
+
+
+
+
+class Ambulance(models.Model):
+    '''store login data'''
+    amb_time = models.DateTimeField(auto_now_add=True)
+    area = models.CharField(blank=True,max_length=50,  default=False)
+    city = models.CharField(blank=True,max_length=50,  default=False)
+    phone = models.CharField(blank=True, max_length=20,  default=False)
+
+
+
+
+
+
+
+class Orderdrugs(models.Model):
+
+    # user = models.OneToOneField(User)
+    telno = models.CharField(blank=True, max_length=20,  default=False)
+    area = models.CharField(blank=True,max_length=50,  default=False)
+    city = models.CharField(blank=True,max_length=50,  default=False)
+    msg = models.CharField(blank=False, max_length=20,  default=False)
+    when = models.DateTimeField(auto_now_add=True)
+    staff_no = models.CharField(blank=True,max_length=70,  default=False)
+    staff_name = models.CharField(blank=True,max_length=70,  default=False)
+
+
+class Labtests(models.Model):
+
+    # user = models.OneToOneField(User)
+    telno = models.CharField(blank=True, max_length=20,  default=False)
+    area = models.CharField(blank=True,max_length=50,  default=False)
+    city = models.CharField(blank=True,max_length=50,  default=False)
+    msg = models.CharField(blank=False, max_length=20,  default=False)
+    when = models.DateTimeField(auto_now_add=True)
+    staff_no = models.CharField(blank=True,max_length=70,  default=False)
+    staff_name = models.CharField(blank=True,max_length=70,  default=False)
+
+
+
+
+
+
+
+
+class Contact(models.Model):
+
+    # user = models.OneToOneField(User)
+    telno = models.CharField(blank=True, max_length=20,  default=False)
+    email = models.CharField(blank=True,max_length=50,  default=False)
+    msg = models.CharField(blank=False, max_length=20,  default=False)
+
+
+
+
+
+
+
+
+class ConsultPayment(models.Model):
+
+    # user = models.OneToOneField(User)
+    telno = models.CharField(blank=True, max_length=20,  default=False)
+    email = models.CharField(blank=True,max_length=50,  default=False)
+    msg = models.CharField(blank=False, max_length=20,  default=False)

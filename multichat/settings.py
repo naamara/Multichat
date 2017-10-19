@@ -32,6 +32,15 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'chat',
     'AfricasTalkingGateway',
+    # django-dash app with some plugs
+    'dash',
+    'dash.contrib.layouts.android',
+    'dash.contrib.layouts.bootstrap2',
+    'dash.contrib.layouts.windows8',
+    
+
+    
+
   
 
 ]
@@ -63,10 +72,13 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 
+                
             ],
         },
     },
 ]
+
+
 
 WSGI_APPLICATION = 'multichat.wsgi.application'
 
