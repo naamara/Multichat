@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth.views import login, logout
-from chat.views import homeadmin,create_stuff_user, simple,simple2, complex, landing,illness,register,user_login,whyus,about,contact,our_team,our_team,how_it_works,orderdrugs,labtests,addcontact
+from chat.views import homeadmin,create_stuff_user, simple,simple2, complex, landing,illness,register,user_login,whyus,about,contact,our_team,our_team,how_it_works,orderdrugs,labtests,addcontact,payconsult
 from django.conf.urls import include
 
 
@@ -32,7 +32,9 @@ urlpatterns = [
     url(r'^team/$', our_team),
     url(r'^orderdrugs/$', orderdrugs),
     url(r'^labtests/$', labtests),
-    url(r'^addcontact/$', addcontact)
+    url(r'^addcontact/$', addcontact),
+    
+    url(r'^payconsult/$', payconsult)
 
 
 

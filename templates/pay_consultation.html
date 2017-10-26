@@ -1,0 +1,199 @@
+{% extends "base_pat.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="contact" style="margin-left:160px;">
+    <div class="wrap">
+                        <div class="contact-top">
+                        <h3>Contact Information</h3>
+                        <p> You can use this page to reach us through commenting about our work, say anything about how you were handled by our doctor . We are there for you</p>
+                        </div>
+                        {% if response %}
+                        <script type="text/javascript">alert('We have successfully deducted 2,000 from ur mobile money') </script>
+                        {% endif %}
+
+                    <div class="form">
+                        <form class="cmxfor" action="/payconsult/"  id="contactFor" method="post">
+                        {% csrf_token %}
+                        <div>
+                           <select type="text" name="network" class="textbox" autofocus>
+                           <option value="MTN">MTN</option>
+                           <option value="AIRTEL">AIRTEL</option>
+                           </select>
+                        </div>
+                        <div>
+                            <input type="text" class="textbox" name="pat_phone" placeholder="Your phonenumber">
+                        </div>
+                        <div>
+                            We Shall deduct 1500 ug shs from your mobile money number
+                        </div>
+
+
+            <input type="hidden" class="textbox" name="pat_username" value="{{pat_username}}">
+
+            <input type="hidden" class="textbox" name="doct_username" value="{{doct_username}}">
+            <input type="hidden" class="textbox" name="id" value="{{chat_ide}}">
+
+               
+
+                       <div>
+                            <p><input type="submit" class="rea" style="font-size: 120%;
+line-height: 2;
+text-align: center;
+background-color: #1fadc5;
+display: inline-block;
+color: #fff !important;
+border-radius: 3em;
+cursor: pointer;
+max-width: 350px;
+width: 100%;
+padding: 0.9em;
+margin: 0.6em 0;
+border: 0;"  name="submit" value="submit"></p>
+                       </div>
+                  
+             </div>
+
+                 
+               
+
+
+
+               </form>
+
+
+
+            <div class="clear"></div>
+
+  {% endblock %}
+            
+
+{% block bottom_content %}
+   
+     <div class="content" style="width:2300px;">
+        <div class="wrap">
+          <div class="wrapper">
+        <div class="con-top">
+          <h3>Welcome to our Doctor(Medical) consultation Portal!</h3>
+          <p>Register By clicking on  <a href="/register/" style="font-family: sans-serif;font-size: 20px;color:rgb(8, 218, 243);">Sign up!</a>and  you will be automatically registered and then you will fill in your sickness  symptons and signs  . You will automatically get access to the home page and get in touch with the doctor you want  very fast</p>
+        </div>
+        <div class="con-bot">
+          <div class="left">
+            <div class="bot-left">
+              <img src="{% static 'img/home/IMG_20170810_183736.jpg' %}" alt=""/>
+            </div>
+            <div class="left-text">
+            <h4>A group of doctors with whom we partner</h4>
+            <span class="doller"></span>
+            <p>They just have been in a short meeting </p>
+            <p><span class="read">Read More ></span></p>
+            </div>
+          </div>
+          <div class="left">
+            <div class="bot-left">
+              <img src="{% static 'img/home/IMG_20170810_183743.jpg' %}" alt=""/>
+            </div>
+            <div class="left-text">
+            <h4>Our Senior Experienced Doctors(M)</h4>
+            <span class="doller"></span>
+            <p><!-- Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismo --></p>
+              <p><span class="read">Read More >></span></p>
+            </div>
+          </div>
+          <div class="right">
+            <div class="bot-left">
+              <img src="{% static 'img/home/IMG_20170810_190527.jpg' %}" alt=""/>
+            </div>
+            <div class="left-text">
+              
+              <h4>A senior medical doctor seated at the work place</h4>
+              <span class="doller"></span>
+              <p><!-- Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismo --></p>
+                <p><span class="read">Read More ></span></p>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+          <div class="grids">
+        <div class="box1">
+                                <div class="padding">
+                                    <h4>This Week's Top 10</h4>
+                                    <ul class="list list-pad">
+                                        <li class="list-bg"><span>1.</span><a href="#">New maternity benefit law may cut jobs for women; 66 per cent startups</a></li><br/>
+                                        <li class="list-bg1"><span>2.</span><a href="#">Weight-loss drug shows potential to treat opioid abuse</a></li><br/>
+                                        <li class="list-bg"><span>3.</span><a href="#">Treatments need to address 'cue reactivity'</a></li><br/>
+                                        <li class="list-bg1"><span>4.</span><a href="#">Lorcaserin reduced opioid use and cue reactivity  </a></li><br/>
+                                        <li class="list-bg"><span>5.</span><a href="#">How do alcohol and caffeine affect A-fib?</a></li><br/>
+                                        <li class="list-bg1"><span>6.</span><a href="#"> Aggression disorder linked to greater risk of substance abuse </a></li><br/>
+                                        <li class="list-bg"><span>7.</span><a href="#">Hangover memories more likely with a family history of drinking problems </a></li><br/>
+                                        <li class="list-bg1"><span>8.</span><a href="#">Given the choice, patients will reach for cannabis over prescribed opioids </a></li><br/>
+                                        <li class="list-bg"><span>9.</span><a href="#">Review confirms link between drug use and poor dental health</a></li><br/>
+                                        <li class="list-bg1"><span>10.</span><a href="#">Component of marijuana may help treat anxiety and substance abuse disorders </a></li>
+                                    </ul>
+                                    <a href="#" class="link1">See all headlines</a>
+                                </div>
+                            <div class="padding1">
+                                    <h4>Our Patients Testimonials</h4>
+                                    <div class="box-left">
+                                    <div class="bot-img">
+                                      <img src="{% static 'img/home/IMG_20170810_183932.jpg' %}" alt=""/>
+                                    </div>
+                                      <div class="bot-desc">
+                                        <p>Time and again, our clients report that Best Doctors more than pays for itself. Organizations save dollars, worry and even lives. Which is why we now serve more members in every industry. </p>
+                                      </div>
+                                    <div class="clear"></div>
+                                    <div class="bot-img">
+                                      <img src="{% static 'img/home/IMG_20170810_183831.jpg' %}" alt=""/>
+                                     </div>
+                                      <div class="bot-desc">
+                                        <p>Best Doctors creates a collaborative environment where doctors work together to improve outcomes. We do this by creating a report that not only supports the member, but also the treating team, which supports decision making and helps ensure better outcomes.
+                                      </p>
+
+
+                                     </div>
+                                    <div class="clear"></div>
+                                    <div class="bot-img">
+                                      <img src="{% static 'img/home/index12.jpeg' %}" alt=""/>
+                                    </div>
+                                      <div class="bot-desc">
+                                        <p>After seeing almost a dozen different doctors, Samuel was frustrated by his increasing pain levels, lack of mobility and the absence of any clear answers regarding her condition, so he contacted Doctors through us, he then got the clear answers to his condition from us</p>
+                                    </div>
+                                      <div class="clear"></div>
+                                    </div>
+                                    <div class="box1-left">
+                                    <div class="bot-img">
+                                      <img src="{% static 'img/home/IMG_20170810_183950.jpg' %}" alt=""/>
+                                    </div>
+                                      <div class="bot-desc1">
+                                        <p>“Through us , people can chat with a doctor on demand, send pictures of a problem, and even copies of lab results  and past historical illness to find out if something is serious or not . They can also order for labtests or prescription based on doctors prescription
+                                        "
+
+
+
+                                     </div>
+                                    <div class="clear"></div>
+                                    
+                                    <div class="clear"></div>
+                                    <div class="bot-img">
+                                      <img src="{% static 'img/home/IMG_20170810_191236.jpg' %}" alt=""/>
+                                     </div>
+                                      <div class="bot-desc1">
+                                        <p><!-- Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet --> </p>
+                                      </div>
+                                    <div class="clear"></div>
+                                    </div>
+                      </div>
+                        <div class="clear"></div>      
+        </div
+
+
+        <div class="copy">
+    <p>ES - DOCTOR&copy; 2017 All rights Reserved | Design by <a href="http://w3layouts.com">Mandela Shaban</a> &nbsp;&nbsp;&nbsp;Photos by <a href="http://www.freegreatpicture.com/">Freegreatpicture</a></p>
+  </div>
+ 
+
+
+
+        {% endblock %}
+

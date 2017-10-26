@@ -11,3 +11,6 @@ admin.site.register(Message)
 admin.site.register(Register)
 
 admin.site.register(Illness)
+
+admin.site.register(ConsultPayment)
+

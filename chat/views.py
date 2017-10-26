@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render_to_response, get_object_or_404
 
-from chat.models import Document, Orderdrugs,Labtests,Contact
+from chat.models import Document, Orderdrugs,Labtests,Contact,ConsultPayment
 
 from chat.utils import All_doctors, doctor_users
 from django.contrib.auth.models import User
@@ -29,6 +29,7 @@ from AfricasTalkingGateway.server import SendSms
 from chat.check_area import *
 from chat.check_areas import *
 from django.contrib import messages
+from chat.networks import NETWORKS, NETWORKS_PHONE
 
 
 @csrf_exempt
@@ -184,6 +185,19 @@ def simple(request, id):
     dtelno = Room.objects.get(id=id).dtelno
     comment = Room.objects.get(id=id).comment
     createdBy = Room.objects.get(id=id).createdBy
+    dUsername = Room.objects.get(id=id).dUsername
+
+
+    check_pay_duration = ConsultPayment.objects.filter(pay_time__week_day = 7, patient=createdBy,doctor=dUsername)
+
+    if check_pay_duration:
+        check_pay_duration.delete()
+        return render_to_response('pay_consultation.html', {'chat_id':Room.objects.get(id=id).id, 'pat_username':createdBy, 'doct_username':dUsername }) 
+
+    if not ConsultPayment.objects.filter(patient=createdBy,doctor=dUsername).exists():
+
+        return render_to_response('pay_consultation.html', {'chat_id':Room.objects.get(id=id).id, 'pat_username':createdBy, 'doct_username':dUsername }) 
+
 
     print "Doctor Phone number", dtelno
 
@@ -727,3 +741,80 @@ def addcontact(request):
 
 
     return render_to_response('contactus.html', {}, context)
+
+
+@csrf_exempt
+def payconsult(request):
+  
+    response = False
+    our_telno = None
+    pat_username = None
+    doct_username = None 
+    value  = None
+    chat_id= None
+    post_values = {}
+    p_telno = None
+
+    context = RequestContext(request)
+
+    if request.POST:
+        post_values = request.POST.copy()
+        network = post_values['network']
+        pat_phone = post_values['pat_phone']
+        pat_username = post_values['pat_username']
+        doct_username = post_values['doct_username']
+        chat_id = post_values['id']
+        print "Patient Username %s  and Doctor Username %s" %  (pat_username, doct_username)
+
+        if network ==  NETWORKS[0]:
+            our_telno = NETWORKS_PHONE['MTN']
+        if network ==  NETWORKS[1]:
+            our_telno = NETWORKS_PHONE['AIRTEL']
+        try:
+            pay=ConsultPayment.objects.get(p_telno=pat_phone,our_telno=our_telno, doctor=doct_username,patient =pat_username)
+        except ConsultPayment.DoesNotExist:
+            pay=ConsultPayment(p_telno=pat_phone,our_telno=our_telno, doctor=doct_username,patient =pat_username, cons_amount='1500')
+            pay.save()
+        
+        chat_id = Room.objects.get(dUsername=doct_username, createdBy=pat_username).id
+
+
+        print "Id Id : ", chat_id
+
+
+        if pay:
+            response = True
+
+            return simple_pay(chat_id)
+          
+    return render_to_response('pay_consultation.html', {}, context)
+   
+
+
+
+def simple_pay(id):
+    
+    """Simple chat room demo, it is not attached to any other models"""
+    # get the chat instance that was created by the fixture, pass the id to the template and you're done!
+    dtelno = Room.objects.get(id=id).dtelno
+    comment = Room.objects.get(id=id).comment
+    createdBy = Room.objects.get(id=id).createdBy
+    dUsername = Room.objects.get(id=id).dUsername
+
+
+    check_pay_duration = ConsultPayment.objects.filter(pay_time__week_day = 7, patient=createdBy,doctor=dUsername)
+
+    if check_pay_duration:
+        check_pay_duration.delete()
+        return render_to_response('pay_consultation.html', {'chat_id':Room.objects.get(id=id).id, 'pat_username':createdBy, 'doct_username':dUsername }) 
+
+    if not ConsultPayment.objects.filter(patient=createdBy,doctor=dUsername).exists():
+
+        return render_to_response('pay_consultation.html', {'chat_id':Room.objects.get(id=id).id, 'pat_username':createdBy, 'doct_username':dUsername }) 
+
+
+    print "Doctor Phone number", dtelno
+
+    
+
+    return render_to_response('simple.html', {'chat_id':Room.objects.get(id=id).id}) 

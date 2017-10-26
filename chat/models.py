@@ -281,6 +281,9 @@ class Contact(models.Model):
 class ConsultPayment(models.Model):
 
     # user = models.OneToOneField(User)
-    telno = models.CharField(blank=True, max_length=20,  default=False)
-    email = models.CharField(blank=True,max_length=50,  default=False)
-    msg = models.CharField(blank=False, max_length=20,  default=False)
+    p_telno = models.CharField(blank=True, max_length=20,  default=False)
+    our_telno = models.CharField(blank=True, max_length=20,  default=False)
+    doctor = models.CharField(blank=True,max_length=50,  default=False)
+    patient = models.CharField(blank=True,max_length=50,  default=False)
+    pay_time = models.DateTimeField(auto_now_add=True)
+    cons_amount = models.IntegerField(blank=False)
