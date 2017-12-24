@@ -1,5 +1,7 @@
 
 {% load static %}
+{% load bootstrap_themes %}
+
 <html>
 <head>
 <title>Doctor(Medical)  Consultation Website | Home </title>
@@ -21,6 +23,12 @@
 
       <script src="{% static "js/jquery-1.12.2.min.js" %}" type="text/javascript"></script>
 
+<!--     for bootstrap themes
+ -->
+ {% bootstrap_styles theme='default' type='min.css' %}
+{% bootstrap_styles theme='cosmo' type='css' %}
+{% bootstrap_styles theme='united' type='less' %}
+{% bootstrap_script use_min=True %}
     
 </head>
 <body>

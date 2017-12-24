@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'bootstrap_themes',
     'chat',
     'AfricasTalkingGateway',
     # django-dash app with some plugs

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 {% load staticfiles %}
+{% load bootstrap_themes %}
 
 <html>
 <head>
@@ -20,6 +21,16 @@
     enable_page_level_ads: true
   });
 </script>
+
+
+<!--     for bootstrap themes
+ -->
+ 
+      {% bootstrap_styles theme='default' type='min.css' %}
+{% bootstrap_styles theme='cosmo' type='css' %}
+{% bootstrap_styles theme='united' type='less' %}
+{% bootstrap_script use_min=True %}
+    
 
 
 

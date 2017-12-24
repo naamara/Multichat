@@ -40,24 +40,15 @@
 <div class="header-bottom">
       <div class="wrap">
         <ul id="nav">
-                <li><a class="hsubs" href="/Doct/" title="Logout">Home</a></li>
+                <li><a class="hsubs" href="/" title="Logout">Home</a></li>
                
-                <li><a class="hsubs" href="/Doct/team/">Our Team</a>
-                 <li><a href="/Doct/contact/">Feedback</a></li>
-                <li><a href="/Doct/how_it_works/">How it works</a></li>
+                <li><a class="hsubs" href="/team/">Our Team</a>
+                 <li><a href="/contact/">Feedback</a></li>
+                <li><a href="/how_it_works/">How it works</a></li>
 
                 {% if qconvs or ill_more %}
             
-                 <li><form action="/Doct/converse/" style="height:35px;border: 0px; background-color: #3399FF" id="changesicknessform_form" method="post">
-                {% csrf_token %}
-
-                <input type="hidden" name="username" value="{{username}}" style="width: 200px; border: 0px; " id="dname"/>
-
-                <input type="hidden" name="dusername" value="0754307471" style="width: 200px; border: 0px; " id="dname"/>
-
-                <tr><td style="width: 4px; padding-bottom: 10px"><input type="submit" name="submit" value="Converse"  style="width: 100px; border: 0px; background-color: white; color: #337ab7; " /></td></tr>
-
-                </form>
+                 <li>
                 <ul class="submenu">
                       <!-- <li><a href="edit_username.php" title="Update Username">Change Username</a></li>   
                             <li><a href="edit_password.php" title=" Update Password">Change Password</a></li> -->
@@ -66,7 +57,7 @@
 
                     {% endif %}
 
-                <li><a href="/Doct/whyus/">Why Us</a></li>
+                <li><a href="/whyus/">Why Us</a></li>
                     <ul class="subs">
                         <li><a href="#">Hotels</a></li>
                         <li><a href="#">Restaurants</a></li>
@@ -75,11 +66,11 @@
                 </li>
                  {% if user.is_authenticated %}
 
-                <li><a href="/Doct/logout/">Logout</a></li>
+                <li><a href="/logout/">Logout</a></li>
 
                 {%  else %}
-                <li><a class="hsubs" href="/Doct/register/">Sign Up</a>
-                <li><a class="hsubs" href="/Doct/login/">Doctor/Admin Log In</a></li>
+                <li><a class="hsubs" href="/register/">Sign Up</a>
+                <li><a class="hsubs" href="/login/">Doctor/Admin Log In</a></li>
 
 
                 {% endif %}

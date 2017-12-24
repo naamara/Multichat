@@ -412,6 +412,8 @@ def user_login(request):
     doctor_users = All_doctors(doctor_users)
     doctor_sms_data = {}
 
+    role = None
+
     # If the request is a HTTP POST, try to pull out the relevant information.
     if request.method == 'POST':
         # Gather the username and password provided by the user.
@@ -423,6 +425,9 @@ def user_login(request):
 
         try:
             check_user = Register.objects.get(password=password, username=username)
+            role = check_user.role2
+            print "Role %s" %(role)
+
 
         except Register.DoesNotExist:
             listing = None
@@ -432,7 +437,7 @@ def user_login(request):
 
 
         
-        if check_user.role2 == PATIENT:
+        if role == PATIENT:
        
             try:
                 check_doct = Illness.objects.get(username=username)
@@ -477,7 +482,7 @@ def user_login(request):
         
     
 
-        elif check_user.role2 == DOCTOR:
+        elif role == 'doctor':
                 try:
                     dp_room=Room.objects.filter(dUsername=username)  
                 except Exception,e:
@@ -488,18 +493,17 @@ def user_login(request):
 
 
                 user = authenticate(username=username, password=password)
-                if user is not None:
-                    if user.is_active:
-                        login(request, user)
+                
+                login(request, user)
 
-                        print "Username 1", username
-                        print "Password 1", password
-                        
-                        return render(request, "doct_chat.html", {'dp_room':dp_room,'username':username
-        
-            })
+                print "Username 1", username
+                print "Password 1", password
+                
+                return render(request, "doct_chat.html", {'dp_room':dp_room,'username':username
 
-        elif check_user.role2 == ADMIN:
+    })
+
+        elif role == ADMIN:
                 try:
                     dp_room=Room.objects.filter(dUsername=username)  
                 except Exception,e:
@@ -785,7 +789,28 @@ def payconsult(request):
         if pay:
             response = True
 
-            return simple_pay(chat_id)
+            """Simple chat room demo, it is not attached to any other models"""
+            # get the chat instance that was created by the fixture, pass the id to the template and you're done!
+            dtelno = Room.objects.get(id=chat_id).dtelno
+            comment = Room.objects.get(id=chat_id).comment
+            createdBy = Room.objects.get(id=chat_id).createdBy
+            dUsername = Room.objects.get(id=chat_id).dUsername
+
+
+            check_pay_duration = ConsultPayment.objects.get(patient=createdBy,doctor=dUsername)
+            print "Good"
+            
+            if not ConsultPayment.objects.filter(patient=createdBy,doctor=dUsername).exists():
+                print "Good 2"
+
+                return render_to_response('pay_consultation.html', {'chat_id':Room.objects.get(id=chat_id).id, 'pat_username':createdBy, 'doct_username':dUsername }) 
+
+
+            print "Doctor Phone number", dtelno
+
+            
+
+            return render_to_response('simple.html', {'chat_id':Room.objects.get(id=chat_id).id}) 
           
     return render_to_response('pay_consultation.html', {}, context)
    
