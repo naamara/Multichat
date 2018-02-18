@@ -17,7 +17,7 @@ from django.contrib import admin
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret! And don't use debug=True in production!
-SECRET_KEY = 'imasecret'
+SECRET_KEY = '8lu*6g0lg)9z!ba+a$ehk)xt)x%rxgb$i1&amp;022shmi1jcgihb*'
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
@@ -131,8 +131,8 @@ STATIC_URL = '/static/'
 # Add these new lines
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
-admin.site.site_header = 'Healthstone Medical Consultation'
-admin.site.site_title = 'Healthstone admin'
+admin.site.site_header = 'DoctorUg Medical Consultation'
+admin.site.site_title = 'DoctorUg admin'
 
 
 

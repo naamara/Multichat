@@ -10,7 +10,7 @@
   <form id="signu" action="/illness/"  method="POST" style=" display: inline-block;
 vertical-align: top;
 text-align: left;
-width: 50%;margin-left: 270px;">
+width: 50%;margin-left: 270px;" autocomplete="off">
 {% csrf_token %}
     
             
@@ -47,13 +47,14 @@ width: 50%;margin-left: 270px;">
                  <input type="telno" name="telno"  id="password"  Placeholder="Mobile Number" />
                  </p>
 
-                 <p style="padding: 2px"> City:<br>    
-                 <input type="telno" name="city"  id="password"  Placeholder="City" />
+                <!--  <p style="padding: 2px"> City:<br>   -->  
+             <!--     <input type="telno" name="city"  id="password"  Placeholder="City" /> -->
+             <input type="hidden" name="city"  id="password"  value="Kampala" Placeholder="City" />
                  </p>
 
 
-                 <p style="padding: 2px"> Country:<br>    
-                 <input type="telno" name="state"  id="password"  Placeholder="Country" />
+               <!--   <p style="padding: 2px"> Country:<br> -->    
+                 <input type="hidden" name="state"  value="Uganda" id="password"  Placeholder="Country" />
                  </p>
 
               
@@ -62,7 +63,7 @@ width: 50%;margin-left: 270px;">
                  <option value="peter">Choose A Doctor</option>
 
                  {% for doctor_user in doctor_users %}
-                 <option value="{{doctor_user.username}}">{{doctor_user.username}}</option>
+                 <option value="{{doctor_user.username}}">{{doctor_user.username}}({{doctor_user.specialty}})</option>
                 {% endfor %}
                  </select>
               

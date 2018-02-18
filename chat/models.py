@@ -241,6 +241,7 @@ class Orderdrugs(models.Model):
     area = models.CharField(blank=True,max_length=50,  default=False)
     city = models.CharField(blank=True,max_length=50,  default=False)
     msg = models.CharField(blank=False, max_length=20,  default=False)
+    total = models.CharField(blank=False, max_length=20,  default=False)
     when = models.DateTimeField(auto_now_add=True)
     staff_no = models.CharField(blank=True,max_length=70,  default=False)
     staff_name = models.CharField(blank=True,max_length=70,  default=False)

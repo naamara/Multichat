@@ -5,96 +5,23 @@ link for the popup
 
 http://makecodeeasy.blogspot.ug/2012/07/popup-in-java-script-and-css.html -->
 
-{% block navbar %}
-
-
-{% endblock %}
-
-
 {% block content %}
 
-
-{% if msg %}
-{{msg}}
-{% endif %}
-
-{% if registered %}
-		<strong>
-		<script>alert("You have successfully registered")</script>
-		</strong>
-		<br />
-{% endif %}
-
-<div id="">
-
-
-
-
-
-
-{% include "notifications.html" %}
-
-    <form ng-app="myApp" action="/orderdrugs/" ng-controller="validateCtrl" name="myForm"   novalidate class="form-style-6" style="margin-left: 450px;" method="post">
-    <h1 style="width:300px;font-family: Helvetica, sans-serif;"  >Order Drugs</h1>
-{% csrf_token %}
-<p>Drugs:<br>
-  <textarea ng-model="msg" name="msg" rows="4" cols="34"
-                        required="True">
-</textarea>
-
-  <span style="color:red" ng-show="myForm.msg.$dirty && myForm.msg.$invalid">
-  <span ng-show="myForm.msg.$error.required">Message is required.</span>
-  </span>
-</p>
-<br>
-
-
-Phonenumber:<br>
-  <input type="text" name="telno"  style="width:280px; padding: 12px 20px;
+<head>
+<style type="text/css">
+  input, select{
+    width:280px; padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box;" required="True">
- 
-
- 
-  <p>City:<br>
-  <select  type="text" name="city"  style="width:280px;padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;" ng-model="location" required="True">
-    <option value="Kampala">Kampala</option>
-    
-
-    </select>
-
-</p>
-
-<br>
- 
-
-<p>Area :<br>
-  <select  type="text" name="area"  style="width:280px;padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;" ng-model="location" required="True">
-
-     {% include "area_in_kampala.html" %}
-
-    </select>
-
-</p>
-  
-  
-
-  
-<p>
-  <input type="submit" style="font-size: 110%;
+    box-sizing: border-box;
+  }
+  form{
+    margin-left: 450px;
+  }
+  #submit{
+    font-size: 110%;
 line-height: 1;
 text-align: center;
 background-color: #1fadc5;
@@ -106,199 +33,34 @@ max-width: 300px;
 width: 500px;
 padding: 0.9em;
 margin: 0.6em 0;
-border: 0;" name="submit" value="Order Drugs">
-</p>
+border: 0;
+  }
+  #header{
+    text-align: center;
+  }
+</style>
 
+</head>
+<body>
+    
+    <h1 id="header"></h1>
+
+     <form ng-app="myApp" action="/orderdrugs/" ng-controller="validateCtrl" name="myForm"   novalidate class="form-style-6" style="margin-left: 450px;" method="post">
+     <div id="container">
+   
+{% csrf_token %}
+<p>Number of Drugs<br>
+ <input type="text" id="member" name="member" value=""><br />
+    <a href="#" id="filldetails" onclick="addFields()">Fill Details</a>
+    
+  <span style="color:red" ng-show="myForm.msg.$dirty && myForm.msg.$invalid">
+  <span ng-show="myForm.msg.$error.required"></span>
+  </span>
+</p>
+<br>
+
+</div>
     </form>
 
-    <script>
-var app = angular.module('myApp', []);
-app.controller('validateCtrl', function($scope) {
-    $scope.telno = '';
-    $scope.email = '';
-    $scope.msg = '';
-});
-
-</script>
-
-
-
-
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<div id="secure_area_message" align="center"></div>
-
-
-
-
-
-
-<div>
-
-</div>
-
-
-
-
-
-
-{% endblock %}
-
-
-		
-
-
-
-
-	
-
- {% block bottom_content %}
-   
-     <div class="content" style="width:2300px;">
-        <div class="wrap">
-          <div class="wrapper">
-        <div class="con-top">
-          <h3>Welcome to our Doctor(Medical) consultation Portal!</h3>
-          <p>Register By clicking on  <a href="/register/" style="font-family: sans-serif;font-size: 20px;color:rgb(8, 218, 243);">Sign up!</a>and  you will be automatically registered and then you will fill in your sickness  symptons and signs  . You will automatically get access to the home page and get in touch with the doctor you want  very fast</p>
-        </div>
-        <div class="con-bot">
-          <div class="left">
-            <div class="bot-left">
-              <img src="{% static 'img/home/IMG_20170810_183736.jpg' %}" alt=""/>
-            </div>
-            <div class="left-text">
-            <h4>A group of doctors with whom we partner</h4>
-            <span class="doller"></span>
-            <p>They just have been in a short meeting </p>
-            <p><span class="read">Read More ></span></p>
-            </div>
-          </div>
-          <div class="left">
-            <div class="bot-left">
-              <img src="{% static 'img/home/IMG_20170810_183743.jpg' %}" alt=""/>
-            </div>
-            <div class="left-text">
-            <h4>Our Senior Experienced Doctors(M)</h4>
-            <span class="doller"></span>
-            <p><!-- Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismo --></p>
-              <p><span class="read">Read More >></span></p>
-            </div>
-          </div>
-          <div class="right">
-            <div class="bot-left">
-              <img src="{% static 'img/home/IMG_20170810_190527.jpg' %}" alt=""/>
-            </div>
-            <div class="left-text">
-              
-              <h4>A senior medical doctor seated at the work place</h4>
-              <span class="doller"></span>
-              <p><!-- Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismo --></p>
-                <p><span class="read">Read More ></span></p>
-            </div>
-          </div>
-          <div class="clear"></div>
-        </div>
-          <div class="grids">
-        <div class="box1">
-                                <div class="padding">
-                                    <h4>This Week's Top 10</h4>
-                                    <ul class="list list-pad">
-                                        <li class="list-bg"><span>1.</span><a href="#">New maternity benefit law may cut jobs for women; 66 per cent startups</a></li><br/>
-                                        <li class="list-bg1"><span>2.</span><a href="#">Weight-loss drug shows potential to treat opioid abuse</a></li><br/>
-                                        <li class="list-bg"><span>3.</span><a href="#">Treatments need to address 'cue reactivity'</a></li><br/>
-                                        <li class="list-bg1"><span>4.</span><a href="#">Lorcaserin reduced opioid use and cue reactivity  </a></li><br/>
-                                        <li class="list-bg"><span>5.</span><a href="#">How do alcohol and caffeine affect A-fib?</a></li><br/>
-                                        <li class="list-bg1"><span>6.</span><a href="#"> Aggression disorder linked to greater risk of substance abuse </a></li><br/>
-                                        <li class="list-bg"><span>7.</span><a href="#">Hangover memories more likely with a family history of drinking problems </a></li><br/>
-                                        <li class="list-bg1"><span>8.</span><a href="#">Given the choice, patients will reach for cannabis over prescribed opioids </a></li><br/>
-                                        <li class="list-bg"><span>9.</span><a href="#">Review confirms link between drug use and poor dental health</a></li><br/>
-                                        <li class="list-bg1"><span>10.</span><a href="#">Component of marijuana may help treat anxiety and substance abuse disorders </a></li>
-                                    </ul>
-                                    <a href="#" class="link1">See all headlines</a>
-                                </div>
-                            <div class="padding1">
-                                    <h4>Our Patients Testimonials</h4>
-                                    <div class="box-left">
-                                    <div class="bot-img">
-                                      <img src="{% static 'img/home/IMG_20170810_183932.jpg' %}" alt=""/>
-                                    </div>
-                                      <div class="bot-desc">
-                                        <p>Time and again, our clients report that Best Doctors more than pays for itself. Organizations save dollars, worry and even lives. Which is why we now serve more members in every industry. </p>
-                                      </div>
-                                    <div class="clear"></div>
-                                    <div class="bot-img">
-                                      <img src="{% static 'img/home/IMG_20170810_183831.jpg' %}" alt=""/>
-                                     </div>
-                                      <div class="bot-desc">
-                                        <p>Best Doctors creates a collaborative environment where doctors work together to improve outcomes. We do this by creating a report that not only supports the member, but also the treating team, which supports decision making and helps ensure better outcomes.
-                                      </p>
-
-
-                                     </div>
-                                    <div class="clear"></div>
-                                    <div class="bot-img">
-                                      <img src="{% static 'img/home/index12.jpeg' %}" alt=""/>
-                                    </div>
-                                      <div class="bot-desc">
-                                        <p>After seeing almost a dozen different doctors, Samuel was frustrated by his increasing pain levels, lack of mobility and the absence of any clear answers regarding her condition, so he contacted Doctors through us, he then got the clear answers to his condition from us</p>
-                                    </div>
-                                      <div class="clear"></div>
-                                    </div>
-                                    <div class="box1-left">
-                                    <div class="bot-img">
-                                      <img src="{% static 'img/home/IMG_20170810_183950.jpg' %}" alt=""/>
-                                    </div>
-                                      <div class="bot-desc1">
-                                        <p>“Through us , people can chat with a doctor on demand, send pictures of a problem, and even copies of lab results  and past historical illness to find out if something is serious or not . They can also order for labtests or prescription based on doctors prescription
-                                        "
-
-
-
-                                     </div>
-                                    <div class="clear"></div>
-                                    
-                                    <div class="clear"></div>
-                                    <div class="bot-img">
-                                      <img src="{% static 'img/home/IMG_20170810_191236.jpg' %}" alt=""/>
-                                     </div>
-                                      <div class="bot-desc1">
-                                        <p><!-- Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet --> </p>
-                                      </div>
-                                    <div class="clear"></div>
-                                    </div>
-                      </div>
-                        <div class="clear"></div>      
-        </div
-
-        {% endblock %}
-
-
-
-
-
-              {% block footer %}
-
-
-
-<div class="fo0ter-boottom">
-<div class="wrap">  
-  <div class="copy">
-    <p style="margin-left: 300px;">Your Company Name &copy; 2013 All rights Reserved | Design by <a href="http://w3layouts.com">W3Layouts</a> &nbsp;&nbsp;&nbsp;Photos by <a href="http://www.freegreatpicture.com/">Freegreatpicture</a></p>
-  </div>
- </div>
-</div>
-</div>
-
-
-{% endblock %}
-
-
-{% block extra_body %}
 
 {% endblock %}

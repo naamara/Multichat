@@ -12,7 +12,7 @@
 
                         {% include "notifications.html" %}
                     <div class="form">
-                        <form class="cmxfor" action="/addcontact/"  id="contactFor" method="post">
+                        <form class="cmxfor" action="/addcontact/"  id="contactFor" method="post" autocomplete="off">
                         {% csrf_token %}
                         <div>
                             <input type="text" class="textbox" name="name" placeholder="Name:">

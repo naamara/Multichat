@@ -691,13 +691,26 @@ def orderdrugs(request):
         telno = post_values['telno']
         location = post_values['city']
         area = post_values['area']
-        msg = post_values['msg']
-        print "Message %s " %  msg
+        drugs = request.POST.getlist("member")
+        print "Drugs %s " %  drugs
+        amounts = request.POST.getlist("qty")
+        clean_amounts=u", ".join(amounts)
+        clean_amounts=clean_amounts.split(",")
+        print "Amounts %s " %  clean_amounts
+        import json
+        print "Amounts 2 %s " %  json.dumps(clean_amounts)
+        clean_amounts = [int(i) for i in clean_amounts]
+        print "Amount 3 %s" % clean_amounts 
+        tot_amount = sum(clean_amounts)
+        print "Total amount of drugs %s" % tot_amount
+
+        drugs_and_amts = zip(drugs, amounts)
+        print "Drugs and Amounts %s " %  drugs_and_amts
 
   
         staff_no, staff_name = drug_staff(location, staff_no, staff_name)
         
-        cont=Orderdrugs(telno=telno,city=location, area=area, msg=msg, staff_no=staff_no, staff_name=staff_name)
+        cont=Orderdrugs(telno=telno,city=location, area=area, msg=drugs_and_amts, total=tot_amount, staff_no=staff_no, staff_name=staff_name)
         cont.save()
         response = True
 

@@ -1,86 +1,8 @@
-
-<!DOCTYPE HTML>
-{% load static %}
-<html>
-<head>
-<title>Free Easy-Trip Website Template | About :: w3layouts</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<link href="{% static 'css/slider.css' %}" rel="stylesheet" type="text/css" media="all"/>
-<style type="text/css">
-  
-  html{
-  width: 100%;
-  height: 100%;
-}
+{% extends "base_pat.html" %}
+{% load staticfiles %}
 
 
-</style>
-
-
-
-</head>
-<body>
-<div class="header" style="width: 2000px; ">
-<div class="wrap">
-<div class="logo"><a href="index.html" style="color: #fff; font-size: 32px;"><img src="{% static 'images/doctorWom.jpg' %}"  style="width:40px" alt="" />Online Doctor(Medical) Consulation</a></div>
-   <div class="con-right">
-      <div class="grid1-l-img">
-        <img src="{% static 'images/contact.png' %}" alt="">
-      </div>
-      <div class="grid1-l-desc">
-        <p>Contact : +256754307471</p>
-      </div>
-      <div class="clear"></div>
-  </div>
-    <div class="clear"></div>
-     </div>
-</div>
-<div class="header-bottom">
-      <div class="wrap">
-        <ul id="nav">
-                <li><a class="hsubs" href="/" title="Logout">Home</a></li>
-               
-                <li><a class="hsubs" href="/team/">Our Team</a>
-                 <li><a href="/contact/">Feedback</a></li>
-                <li><a href="/how_it_works/">How it works</a></li>
-
-                {% if qconvs or ill_more %}
-            
-                 <li>
-                <ul class="submenu">
-                      <!-- <li><a href="edit_username.php" title="Update Username">Change Username</a></li>   
-                            <li><a href="edit_password.php" title=" Update Password">Change Password</a></li> -->
-                    
-                    </ul> </li>
-
-                    {% endif %}
-
-                <li><a href="/whyus/">Why Us</a></li>
-                    <ul class="subs">
-                        <li><a href="#">Hotels</a></li>
-                        <li><a href="#">Restaurants</a></li>
-                        <li><a href="#">Beach Resorts</a></li>
-                    </ul>
-                </li>
-                 {% if user.is_authenticated %}
-
-                <li><a href="/logout/">Logout</a></li>
-
-                {%  else %}
-                <li><a class="hsubs" href="/register/">Sign Up</a>
-                <li><a class="hsubs" href="/login/">Doctor/Admin Log In</a></li>
-
-
-                {% endif %}
-                              
-               
-        </ul>
-
-       </div>
-</div>
-
+{% block content %}
 
 
 <div class="content" style="margin-left: 60px;">
@@ -88,23 +10,27 @@
    <div class="about">
     <h3 style="margin-left: 380px;">About Us</h3>
     <img src="{% static 'img/doctorWom.jpg' %}" style="height:250px; width:600px;" alt=""/>
-    <p>E-sDoctor is the site that you can use for getting Prescription for your sickness Condition at a reduced price of Ugx.3000 within few seconds
+    <p>E-sDoctor is the site that you can use for getting Prescription for your sickness Condition at a reduced price of Ugx.2000 within few seconds
+   </p>
+
+    <p>E-sDoctor is the site that you can also  use for ordering lab tests online within few seconds at a low costs
    </p>
 
     <p>We are located within Kampala, uganda, Kasokoso Kireka D,</p>
 
     <p>We offer other service like, attending to a patient who 
     needs further help </p>
-    <p>We clearly allow sending of Consultaion(prescription) Fee <br/> to A Ugandan Telephone +256754307471 or +256786031444.</p>
+   
   </div>
   </div>
   </div>
 <div class="footer-bottom" style="width: 2000px;height: 2000px; ">
 <div class="wrap">  
   <div class="copy">
-    <p style="text-align: left;">ES - DOCTOR&copy; 2017 All rights Reserved | Design by <a href="http://w3layouts.com">Mandela Shaban</a> &nbsp;&nbsp;&nbsp;Photos by <a href="http://www.freegreatpicture.com/">Freegreatpicture</a></p>
+    <p style="text-align: left;">ES - DOCTOR&copy; 2018 All rights Reserved | Design by <a href="http://w3layouts.com">Mandela Shaban</a> &nbsp;&nbsp;&nbsp; <a href="#">Free Additional services</a></p>
   </div>
  </div>
 </div>
-</body>
-</html>
+
+
+ {% endblock %}

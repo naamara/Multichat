@@ -7,10 +7,11 @@ from chat.models import *
 
 admin.site.register(Room)
 admin.site.register(Message)
-
 admin.site.register(Register)
-
 admin.site.register(Illness)
-
 admin.site.register(ConsultPayment)
+admin.site.register(Orderdrugs)
+admin.site.register(Labtests)
+
+
 
