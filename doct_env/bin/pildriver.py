@@ -1,4 +1,4 @@
-#!/media/mandela/mydocs1/sites2/channels-examples/multichat_deploy/doct_env/bin/python2
+#!/home/acro/projects/doctorUg/multichat/doct_env/bin/python
 """PILdriver, an image-processing calculator using PIL.
 
 An instance of class PILDriver is essentially a software stack machine

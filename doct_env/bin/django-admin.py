@@ -1,4 +1,4 @@
-#!/media/mandela/mydocs1/sites2/channels-examples/multichat_deploy/doct_env/bin/python2
+#!/home/acro/projects/doctorUg/multichat/doct_env/bin/python
 from django.core import management
 
 if __name__ == "__main__":

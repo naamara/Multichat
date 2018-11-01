@@ -1,4 +1,4 @@
-#!/media/mandela/mydocs1/sites2/channels-examples/multichat_deploy/doct_env/bin/python
+#!/home/acro/projects/doctorUg/multichat/doct_env/bin/python
 
 import sys
 import getopt

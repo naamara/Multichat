@@ -40,7 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/media/mandela/mydocs1/sites2/channels-examples/multichat_deploy/doct_env"
+VIRTUAL_ENV="/home/acro/projects/doctorUg/multichat/doct_env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

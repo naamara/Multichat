@@ -25,7 +25,6 @@ ordereddict==1.1
 pesapal==0.0.6
 pif==0.8.2
 Pillow==4.3.0
-pkg-resources==0.0.0
 pycparser==2.18
 pyOpenSSL==17.5.0
 pytz==2017.2
