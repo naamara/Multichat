@@ -1,2 +1,2 @@
-# doctorUg
-An online Doctor Consultation system in Nakawa Division, Kampala District
+# Multichat
+An online Doctor Consultation system in Nakawa Division, Kampala District.
